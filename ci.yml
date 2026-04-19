@@ -1,0 +1,25 @@
+Global:
+    tool: build_submitter   # 代码构建功能
+
+Default:
+    profile: [java,build,test]  # 要执行的profile列表
+
+Profiles:
+    - profile:
+      name: java           # profile名称
+      env: CUSTOM_ENV       # 自定义环境变量（可选）
+      command: mvn clean package            # 构建命令（支持多行）
+      release: True         # 是否收集产物
+
+    - profile:
+      name: build           # profile名称
+      env: CUSTOM_ENV       # 自定义环境变量（可选）
+      command: |            # 构建命令（支持多行）
+        go mod download
+        go build -o app main.go
+      release: True         # 是否收集产物
+
+    - profile:
+      name: test
+      command: go test ./...
+      release: False
