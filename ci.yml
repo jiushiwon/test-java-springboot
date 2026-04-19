@@ -2,7 +2,7 @@ Global:
     tool: build_submitter   # 代码构建功能
 
 Default:
-    profile: [java,build,test]  # 要执行的profile列表
+    profile: [java]  # 要执行的profile列表
 
 Profiles:
     - profile:
